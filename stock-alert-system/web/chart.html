@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock Alert - Candlestick Chart</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+<div class="alert-header">
+<div class="alert-icon">🔔</div>
+<h1>Stock Alert Triggered</h1>
+</div>
+```
+<div class="stock-info">
+<div class="stock-symbol" id="stockSymbol">Loading...</div>
+<div class="stock-price" id="stockPrice">$0.00</div>
+<div class="stock-change" id="stockChange">0.00%</div>
+</div>
+<div class="trends-section">
+<h2>📊 Performance Trends</h2>
+<div class="trends-grid">
+<div class="trend-card">
+<div class="trend-period">3 Months</div>
+<div class="trend-value" id="trend3mo">--</div>
+</div>
+<div class="trend-card">
+<div class="trend-period">6 Months</div>
+<div class="trend-value" id="trend6mo">--</div>
+</div>
+<div class="trend-card">
+<div class="trend-period">12 Months</div>
+<div class="trend-value" id="trend12mo">--</div>
+</div>
+</div>
+</div>
+<div class="chart-section">
+<h2>30-Day Candlestick Chart</h2>
+<div class="chart-container">
+<canvas id="candlestickChart"></canvas>
+</div>
+<div class="chart-legend">
+<div class="legend-item">
+<div class="legend-color green"></div>
+<span>Price Up</span>
+</div>
+<div class="legend-item">
+<div class="legend-color red"></div>
+<span>Price Down</span>
+</div>
+<div class="legend-item">
+<div class="legend-line"></div>
+<span>Your Threshold</span>
+</div>
+</div>
+</div>
+<div class="footer">
+<p>Last updated: <span id="lastUpdate"></span></p>
+</div>
+</div>
+<script src="chart.js"></script>
+```
+</body>
+</html>

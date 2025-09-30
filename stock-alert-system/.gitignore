@@ -1,0 +1,34 @@
+# Environment variables (NEVER commit these!)
+
+.env
+
+# Dependencies
+
+node_modules/
+
+# Alert history (local tracking)
+
+data/alertHistory.json
+
+# Logs
+
+*.log
+
+npm-debug.log*
+
+# OS files
+
+.DS_Store
+
+Thumbs.db
+
+# IDE
+
+.vscode/
+
+.idea/
+
+*.swp
+
+*.swo
+ 

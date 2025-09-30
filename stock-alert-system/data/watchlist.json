@@ -1,0 +1,44 @@
+{
+
+“stocks”: [
+
+{
+
+“symbol”: “AAPL”,
+
+“name”: “Apple Inc.”,
+
+“threshold”: 150.00,
+
+“alertType”: “below”
+
+},
+
+{
+
+“symbol”: “TSLA”,
+
+“name”: “Tesla Inc.”,
+
+“threshold”: 200.00,
+
+“alertType”: “below”
+
+},
+
+{
+
+“symbol”: “MSFT”,
+
+“name”: “Microsoft Corporation”,
+
+“threshold”: 300.00,
+
+“alertType”: “below”
+
+}
+
+]
+
+}
+ 

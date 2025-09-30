@@ -1,0 +1,35 @@
+name: Stock Price Monitor
+on:
+schedule:
+# Runs every 30 minutes, Monday-Friday, 9:30 AM - 4:00 PM ET (14:30-21:00 UTC)
+- cron: ‘*/30 14-21 * * 1-5’
+workflow_dispatch: # Allows manual trigger from GitHub Actions tab
+jobs:
+check-stocks:
+runs-on: ubuntu-latest
+```
+steps:
+ - name: Checkout code
+   uses: actions/checkout@v3
+ - name: Setup Node.js
+   uses: actions/setup-node@v3
+   with:
+     node-version: '18'
+ - name: Install dependencies
+   run: npm install
+ - name: Check stock prices
+   env:
+     TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+     TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+     TWILIO_PHONE_NUMBER: ${{ secrets.TWILIO_PHONE_NUMBER }}
+     ALERT_PHONE_NUMBER: ${{ secrets.ALERT_PHONE_NUMBER }}
+     ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
+     CHART_BASE_URL: ${{ secrets.CHART_BASE_URL }}
+   run: npm run check
+ - name: Upload alert history
+   uses: actions/upload-artifact@v3
+   if: always()
+   with:
+     name: alert-history
+     path: data/alertHistory.json
+     retention-days: 30
