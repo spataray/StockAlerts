@@ -14,6 +14,7 @@
 
     <!-- CSS -->
     <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/translations.css" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
@@ -24,10 +25,11 @@
                 <span>StockAlerts</span>
             </div>
             <div class="nav-menu" id="navMenu">
-                <a href="#features" class="nav-link">Features</a>
+                <a href="#features" class="nav-link" data-translate="nav_features">Features</a>
                 <a href="#how-it-works" class="nav-link">How It Works</a>
-                <a href="#pricing" class="nav-link">Pricing</a>
-                <button class="btn btn-primary" id="loginBtn">Get Started</button>
+                <a href="#pricing" class="nav-link" data-translate="nav_pricing">Pricing</a>
+                <div id="languageToggle" class="language-toggle-container"></div>
+                <button class="btn btn-primary" id="loginBtn" data-translate="hero_cta">Get Started</button>
             </div>
             <div class="nav-toggle" id="navToggle">
                 <span></span>
@@ -42,8 +44,8 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Get FREE SMS Alerts for Your Stocks</h1>
-                    <p class="hero-subtitle">Monitor your stock portfolio and receive instant SMS notifications when prices hit your custom thresholds. No fees, no subscriptions, completely free!</p>
+                    <h1 data-translate="hero_title">Get FREE SMS Alerts for Your Stocks</h1>
+                    <p class="hero-subtitle" data-translate="hero_subtitle">Monitor your stock portfolio and receive instant SMS notifications when prices hit your custom thresholds. No fees, no subscriptions, completely free!</p>
 
                     <div class="hero-features">
                         <div class="feature-item">
@@ -309,6 +311,8 @@
 
     <!-- Scripts -->
     <script src="assets/js/config.js"></script>
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/stockalerts-translations.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>

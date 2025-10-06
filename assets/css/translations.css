@@ -1,0 +1,153 @@
+/* Translation System Styles */
+
+/* Language Toggle Component */
+.language-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.language-toggle {
+    display: flex;
+    background: var(--bg-secondary, #f8f9fa);
+    border-radius: 12px;
+    padding: 4px;
+    border: 1px solid var(--border-color, #e0e0e0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary, #666);
+    transition: all 0.2s ease;
+    min-width: 60px;
+    justify-content: center;
+}
+
+.lang-btn:hover {
+    background: var(--bg-hover, rgba(0, 0, 0, 0.05));
+    color: var(--text-primary, #333);
+}
+
+.lang-btn.active {
+    background: var(--primary-color, #007bff);
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+}
+
+.lang-btn.active:hover {
+    background: var(--primary-dark, #0056b3);
+}
+
+/* Header Language Toggle */
+.header .language-toggle-container {
+    margin-left: auto;
+}
+
+.header .language-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header .lang-btn {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.header .lang-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.header .lang-btn.active {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .language-toggle {
+        padding: 2px;
+    }
+
+    .lang-btn {
+        padding: 6px 8px;
+        font-size: 12px;
+        min-width: 50px;
+    }
+}
+
+/* PuChokDii Specific Styles */
+.puchokdii-theme .language-toggle {
+    background: var(--thai-white);
+    border: 1px solid var(--gold-light);
+}
+
+.puchokdii-theme .lang-btn {
+    color: var(--thai-black);
+    font-family: 'Sarabun', sans-serif;
+}
+
+.puchokdii-theme .lang-btn:hover {
+    background: var(--gold-light);
+}
+
+.puchokdii-theme .lang-btn.active {
+    background: var(--gold);
+    color: var(--thai-white);
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+}
+
+.puchokdii-theme .lang-btn.active:hover {
+    background: var(--gold-dark);
+}
+
+/* Smooth transitions for content changes */
+[data-translate],
+[data-translate-placeholder],
+[data-translate-title] {
+    transition: opacity 0.2s ease;
+}
+
+.translating [data-translate],
+.translating [data-translate-placeholder],
+.translating [data-translate-title] {
+    opacity: 0.7;
+}
+
+/* Language detection indicator */
+.language-detection {
+    font-size: 12px;
+    color: var(--text-muted, #999);
+    margin-top: 4px;
+    text-align: center;
+}
+
+/* RTL Support (if needed in future) */
+[dir="rtl"] .language-toggle {
+    flex-direction: row-reverse;
+}
+
+/* Animation for language switch */
+@keyframes fadeInTranslation {
+    from {
+        opacity: 0;
+        transform: translateY(-2px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.translation-updated {
+    animation: fadeInTranslation 0.3s ease;
+}

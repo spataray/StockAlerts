@@ -1,5 +1,24 @@
 // Main JavaScript for StockAlerts Frontend
 
+// Initialize Translation System
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize translations for StockAlerts
+    if (window.translator && window.STOCKALERTS_TRANSLATIONS) {
+        window.translator.init('stockalerts', window.STOCKALERTS_TRANSLATIONS);
+
+        // Create language toggle in navigation
+        const languageToggleContainer = document.getElementById('languageToggle');
+        if (languageToggleContainer) {
+            window.translator.createLanguageToggle(languageToggleContainer, {
+                showFlags: true,
+                showText: true,
+                buttonClass: 'language-toggle',
+                activeClass: 'active'
+            });
+        }
+    }
+});
+
 // DOM Elements
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');

@@ -451,6 +451,22 @@ class PuChokDii {
 let puchokdii;
 
 function initPuChokDii() {
+    // Initialize translation system for PuChokDii
+    if (window.translator && window.PUCHOKDII_TRANSLATIONS) {
+        window.translator.init('puchokdii', window.PUCHOKDII_TRANSLATIONS);
+
+        // Create language toggle in navigation
+        const languageToggleContainer = document.getElementById('languageToggle');
+        if (languageToggleContainer) {
+            window.translator.createLanguageToggle(languageToggleContainer, {
+                showFlags: true,
+                showText: true,
+                buttonClass: 'language-toggle',
+                activeClass: 'active'
+            });
+        }
+    }
+
     puchokdii = new PuChokDii();
 }
 

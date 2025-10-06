@@ -14,6 +14,7 @@
 
     <!-- CSS -->
     <link href="assets/css/puchokdii.css" rel="stylesheet">
+    <link href="../assets/css/translations.css" rel="stylesheet">
 </head>
 <body class="puchokdii-body">
     <!-- Navigation -->
@@ -29,12 +30,13 @@
                 </div>
             </div>
             <div class="nav-menu" id="navMenu">
-                <a href="#features" class="nav-link">Features</a>
-                <a href="#how-it-works" class="nav-link">How It Works</a>
-                <a href="#results" class="nav-link">Latest Results</a>
+                <a href="#features" class="nav-link" data-translate="features_title">Features</a>
+                <a href="#check" class="nav-link" data-translate="nav_check">Check Numbers</a>
+                <a href="#results" class="nav-link" data-translate="nav_results">Results</a>
+                <div id="languageToggle" class="language-toggle-container"></div>
                 <button class="btn btn-primary thai-btn" id="loginBtn">
                     <i class="fas fa-sign-in-alt"></i>
-                    เข้าสู่ระบบ
+                    <span data-translate="login">เข้าสู่ระบบ</span>
                 </button>
             </div>
             <div class="nav-toggle" id="navToggle">
@@ -51,10 +53,10 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title">
-                        <span class="title-main">PuChokDii</span>
-                        <span class="title-thai">ผู้โชคดีแห่งความรู้และโชคลาภ</span>
+                        <span class="title-main" data-translate="hero_title_main">PuChokDii</span>
+                        <span class="title-thai" data-translate="hero_title_subtitle">ผู้โชคดีแห่งความรู้และโชคลาภ</span>
                     </h1>
-                    <p class="hero-subtitle">Your trusted Thai lottery companion. Real-time draws, elegant design, rooted in wisdom.</p>
+                    <p class="hero-subtitle" data-translate="hero_description">Your trusted Thai lottery companion. Real-time draws, elegant design, rooted in wisdom.</p>
 
                     <div class="hero-features">
                         <div class="feature-item">
@@ -425,6 +427,8 @@
 
     <!-- Scripts -->
     <script src="assets/js/config.js"></script>
+    <script src="../assets/js/translations.js"></script>
+    <script src="assets/js/puchokdii-translations.js"></script>
     <script src="assets/js/utils.js"></script>
     <script src="assets/js/puchokdii.js"></script>
 </body>
