@@ -5,7 +5,7 @@ Automated stock price monitoring system that sends SMS alerts with candlestick c
 ## Features
 
 - 📊 Real-time stock price monitoring
-- 📱 SMS alerts via Twilio when thresholds are hit
+- 📱 FREE SMS alerts via email-to-SMS (no Twilio needed!)
 - 📈 Interactive candlestick charts with 30-day history
 - 📉 3-month, 6-month, and 12-month trend analysis
 - ⚙️ Custom thresholds per stock
@@ -25,7 +25,7 @@ When a stock hits your threshold, you receive:
 
 - Node.js (v14 or higher)
 - GitHub account
-- Twilio account (for SMS) - [Sign up free](https://www.twilio.com/try-twilio)
+- Email account with SMTP access (Gmail, Outlook, etc.) - FREE!
 - Stock API key from Alpha Vantage - [Get free API key](https://www.alphavantage.co/support/#api-key)
 
 ## Setup Instructions
@@ -38,18 +38,22 @@ cd StockAlerts
 npm install
 ```
 
-### 2. Configure API Keys
+### 2. Configure Email-to-SMS (FREE!)
 
 Create a `.env` file in the root directory:
 
 ```env
-# Twilio Configuration (for SMS)
-TWILIO_ACCOUNT_SID=your_twilio_account_sid
-TWILIO_AUTH_TOKEN=your_twilio_auth_token
-TWILIO_PHONE_NUMBER=+1234567890
+# Email-to-SMS Configuration (FREE alternative to Twilio!)
+EMAIL_USER=youremail@gmail.com
+EMAIL_PASS=your_app_password_here
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
 
-# Your Phone Number
-ALERT_PHONE_NUMBER=+1234567890
+# Your Phone Number (no + needed)
+ALERT_PHONE_NUMBER=1234567890
+
+# Optional: Specify your carrier for accuracy
+CARRIER_OVERRIDE=verizon
 
 # Stock API
 ALPHA_VANTAGE_API_KEY=your_api_key_here
@@ -57,6 +61,19 @@ ALPHA_VANTAGE_API_KEY=your_api_key_here
 # Chart URL (your deployed website)
 CHART_BASE_URL=https://yourdomain.com
 ```
+
+#### Setting up Gmail App Password:
+1. Enable 2-Factor Authentication on your Gmail account
+2. Go to Google Account Settings → Security → App passwords
+3. Generate an app password for "Mail"
+4. Use this app password (not your regular password) for EMAIL_PASS
+
+#### Supported Carriers:
+- Verizon: auto-detected or set `CARRIER_OVERRIDE=verizon`
+- AT&T: set `CARRIER_OVERRIDE=att`
+- T-Mobile: set `CARRIER_OVERRIDE=tmobile`
+- Sprint: set `CARRIER_OVERRIDE=sprint`
+- And many more...
 
 ### 3. Set Your Stock Watchlist
 
@@ -81,13 +98,21 @@ Edit `data/watchlist.json`:
 }
 ```
 
-### 4. Test Locally
+### 4. Test Email-to-SMS Setup
+
+```bash
+npm run test-alert
+```
+
+This sends a test SMS to verify your email-to-SMS configuration works.
+
+### 5. Test Stock Monitoring
 
 ```bash
 npm test
 ```
 
-This will check one time if any stocks are below threshold and send test alert.
+This will check one time if any stocks are below threshold and send real alerts.
 
 ## Deployment Options
 
@@ -97,10 +122,10 @@ The system runs automatically via GitHub Actions every 30 minutes during market 
 
 1. Go to your GitHub repository Settings → Secrets and variables → Actions
 1. Add these secrets:
-- `TWILIO_ACCOUNT_SID`
-- `TWILIO_AUTH_TOKEN`
-- `TWILIO_PHONE_NUMBER`
+- `EMAIL_USER`
+- `EMAIL_PASS`
 - `ALERT_PHONE_NUMBER`
+- `CARRIER_OVERRIDE` (optional)
 - `ALPHA_VANTAGE_API_KEY`
 1. The workflow file `.github/workflows/stock-monitor.yml` is already configured!
 
@@ -108,9 +133,11 @@ The system runs automatically via GitHub Actions every 30 minutes during market 
 
 ```bash
 heroku create your-app-name
-heroku config:set TWILIO_ACCOUNT_SID=xxx
-heroku config:set TWILIO_AUTH_TOKEN=xxx
-# ... set other environment variables
+heroku config:set EMAIL_USER=xxx
+heroku config:set EMAIL_PASS=xxx
+heroku config:set ALERT_PHONE_NUMBER=xxx
+heroku config:set CARRIER_OVERRIDE=xxx
+heroku config:set ALPHA_VANTAGE_API_KEY=xxx
 git push heroku main
 ```
 
@@ -148,9 +175,9 @@ StockAlerts/
 ## Costs
 
 - **Alpha Vantage API**: Free (25 requests/day)
-- **Twilio SMS**: ~$0.0079 per text message
+- **Email-to-SMS**: FREE! (uses your existing email account)
 - **GitHub Actions**: Free (2,000 minutes/month)
-- **Total**: Under $5/month for typical use
+- **Total**: $0/month! 🎉
 
 ## Customization
 
@@ -183,10 +210,13 @@ Just add to `data/watchlist.json`:
 
 ## Troubleshooting
 
-**Not receiving alerts?**
+**Not receiving SMS alerts?**
 
-- Check Twilio account is active and funded
-- Verify phone number format: +1234567890
+- Run `npm run test-alert` to test your setup
+- Check your email spam folder
+- Verify your EMAIL_USER and EMAIL_PASS are correct
+- For Gmail, ensure you're using an App Password (not regular password)
+- Try setting CARRIER_OVERRIDE to your specific carrier
 - Check GitHub Actions logs for errors
 
 **API rate limits?**

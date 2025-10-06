@@ -4,9 +4,15 @@
 "description": "Automated stock monitoring with SMS alerts and candlestick charts",
 "main": "src/priceMonitor.js",
 "scripts": {
-"start": "node src/priceMonitor.js",
-"test": "node src/priceMonitor.js --test",
-"check": "node src/priceMonitor.js --once"
+"start": "node server.js",
+"dev": "node server.js",
+"monitor": "node multiUserMonitor.js",
+"monitor-once": "node multiUserMonitor.js --once",
+"monitor-test": "node multiUserMonitor.js --test",
+"legacy-monitor": "node stock-alert-system/src/priceMonitor.js",
+"legacy-test": "node stock-alert-system/src/priceMonitor.js --test",
+"legacy-check": "node stock-alert-system/src/priceMonitor.js --once",
+"test-alert": "node stock-alert-system/src/testAlert.js"
 },
 "keywords": [
 "stock",
@@ -19,9 +25,17 @@
 "license": "MIT",
 "dependencies": {
 "axios": "^1.6.0",
-"twilio": "^4.19.0",
+"nodemailer": "^6.9.0",
 "dotenv": "^16.3.1",
-"node-cron": "^3.0.3"
+"node-cron": "^3.0.3",
+"express": "^4.18.0",
+"cors": "^2.8.5",
+"helmet": "^7.0.0",
+"rate-limiter-flexible": "^3.0.0",
+"jsonwebtoken": "^9.0.0",
+"bcryptjs": "^2.4.3",
+"sqlite3": "^5.1.6",
+"uuid": "^9.0.0"
 },
 "engines": {
 "node": ">=14.0.0"

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockAlerts - Free SMS Stock Monitoring</title>
+    <meta name="description" content="Get FREE SMS alerts when your stocks hit custom thresholds. No fees, no subscriptions. Just free stock monitoring via email-to-SMS.">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-chart-line"></i>
+                <span>StockAlerts</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <button class="btn btn-primary" id="loginBtn">Get Started</button>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Get FREE SMS Alerts for Your Stocks</h1>
+                    <p class="hero-subtitle">Monitor your stock portfolio and receive instant SMS notifications when prices hit your custom thresholds. No fees, no subscriptions, completely free!</p>
+
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>FREE SMS Alerts</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-chart-area"></i>
+                            <span>Real-time Monitoring</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-cog"></i>
+                            <span>Custom Thresholds</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-cta">
+                        <button class="btn btn-primary btn-large" id="getStartedBtn">
+                            <i class="fas fa-rocket"></i>
+                            Start Monitoring for FREE
+                        </button>
+                        <p class="cta-note">No credit card required • Set up in 2 minutes</p>
+                    </div>
+                </div>
+
+                <div class="hero-demo">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="sms-preview">
+                                <div class="sms-header">
+                                    <span>SMS Alert Preview</span>
+                                </div>
+                                <div class="sms-message">
+                                    <div class="message-bubble">
+                                        <div class="message-content">
+                                            🔔 AAPL Alert: $175.23 (-1.2%)<br>
+                                            Apple Inc.<br>
+                                            Threshold: $180.00<br><br>
+                                            📊 Trends:<br>
+                                            📉 3mo: -5.2%<br>
+                                            📈 6mo: +12.3%<br>
+                                            📈 12mo: +8.7%<br><br>
+                                            📈 Chart: stockalerts.com/chart/AAPL
+                                        </div>
+                                        <div class="message-time">2:34 PM</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose StockAlerts?</h2>
+                <p>Everything you need to stay on top of your investments</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>FREE SMS Alerts</h3>
+                    <p>No Twilio fees! We use your email to send SMS via carrier gateways. Completely free forever.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Real-time Monitoring</h3>
+                    <p>Track your stocks 24/7 with alerts during market hours. Never miss an important price movement.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-target"></i>
+                    </div>
+                    <h3>Custom Thresholds</h3>
+                    <p>Set "above" or "below" price alerts for any stock. Get notified exactly when you want to.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-area"></i>
+                    </div>
+                    <h3>Trend Analysis</h3>
+                    <p>See 3, 6, and 12-month performance trends in every alert to make informed decisions.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-candlestick-chart"></i>
+                    </div>
+                    <h3>Interactive Charts</h3>
+                    <p>Each alert includes a link to beautiful candlestick charts with 30-day price history.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure & Private</h3>
+                    <p>Your data is encrypted and secure. We only send alerts, never spam or marketing messages.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Get started in just 3 simple steps</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Create Your Account</h3>
+                        <p>Sign up with your email address. No passwords needed - we use secure magic links.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Add Your Phone & Stocks</h3>
+                        <p>Enter your phone number, select your carrier, and add the stocks you want to monitor.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Get FREE Alerts</h3>
+                        <p>Receive instant SMS notifications when your stocks hit your custom price thresholds.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>No hidden fees, no subscriptions, no credit card required</p>
+            </div>
+
+            <div class="pricing-card">
+                <div class="price-header">
+                    <h3>Forever Free</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">0</span>
+                        <span class="period">/month</span>
+                    </div>
+                </div>
+
+                <div class="price-features">
+                    <div class="feature">
+                        <i class="fas fa-check"></i>
+                        <span>Unlimited stock alerts</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-check"></i>
+                        <span>FREE SMS notifications</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-check"></i>
+                        <span>Real-time price monitoring</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-check"></i>
+                        <span>Trend analysis & charts</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-check"></i>
+                        <span>Email reminders & confirmations</span>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-large" id="startFreeBtn">
+                    Start Monitoring for FREE
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand">
+                        <i class="fas fa-chart-line"></i>
+                        <span>StockAlerts</span>
+                    </div>
+                    <p>Free stock monitoring for everyone</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#how-it-works">How It Works</a>
+                        <a href="#pricing">Pricing</a>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <a href="mailto:support@stockalerts.com">Contact</a>
+                        <a href="/help">Help Center</a>
+                        <a href="/privacy">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 StockAlerts. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Get Started with StockAlerts</h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required placeholder="your@email.com">
+                        <small>We'll send you a secure login link</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Login Link
+                    </button>
+                </form>
+
+                <div class="login-note">
+                    <p>✨ No passwords needed! We'll email you a secure link to access your account.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

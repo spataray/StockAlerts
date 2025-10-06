@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuChokDii - ผู้โชคดี | Thai Lottery Companion</title>
+    <meta name="description" content="PuChokDii - Your refined Thai lottery companion. Check numbers, get alerts, and embrace good fortune with wisdom and integrity.">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="assets/css/puchokdii.css" rel="stylesheet">
+</head>
+<body class="puchokdii-body">
+    <!-- Navigation -->
+    <nav class="navbar thai-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="logo">
+                    <span class="logo-icon">🍀</span>
+                    <div class="logo-text">
+                        <span class="brand-name">PuChokDii</span>
+                        <span class="brand-thai">ผู้โชคดี</span>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#results" class="nav-link">Latest Results</a>
+                <button class="btn btn-primary thai-btn" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    เข้าสู่ระบบ
+                </button>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero thai-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="title-main">PuChokDii</span>
+                        <span class="title-thai">ผู้โชคดีแห่งความรู้และโชคลาภ</span>
+                    </h1>
+                    <p class="hero-subtitle">Your trusted Thai lottery companion. Real-time draws, elegant design, rooted in wisdom.</p>
+
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <i class="fas fa-search"></i>
+                            <span>ตรวจหวย / Check Numbers</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-bell"></i>
+                            <span>แจ้งเตือนฟรี / FREE Alerts</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>วิเคราะห์เลข / Number Analysis</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-cta">
+                        <button class="btn btn-primary btn-large thai-primary" id="getStartedBtn">
+                            <i class="fas fa-rocket"></i>
+                            เริ่มต้นใช้งาน
+                            <small>Start Your Lucky Journey</small>
+                        </button>
+                        <button class="btn btn-outline btn-large thai-outline" id="checkNumbersBtn">
+                            <i class="fas fa-search"></i>
+                            ตรวจหวยด่วน
+                            <small>Quick Check</small>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="hero-demo">
+                    <div class="lottery-display">
+                        <div class="latest-draw">
+                            <div class="draw-header">
+                                <h3>ผลรางวัลล่าสุด</h3>
+                                <span class="draw-date">Latest Draw Results</span>
+                            </div>
+
+                            <div class="winning-numbers">
+                                <div class="prize-tier first-prize">
+                                    <span class="prize-label">รางวัลที่ 1</span>
+                                    <div class="number-display">
+                                        <span class="number">1</span>
+                                        <span class="number">2</span>
+                                        <span class="number">3</span>
+                                        <span class="number">4</span>
+                                        <span class="number">5</span>
+                                        <span class="number">6</span>
+                                    </div>
+                                    <span class="prize-amount">6,000,000 บาท</span>
+                                </div>
+
+                                <div class="other-prizes">
+                                    <div class="prize-row">
+                                        <span class="label">เลขท้าย 2 ตัว</span>
+                                        <span class="numbers">25</span>
+                                    </div>
+                                    <div class="prize-row">
+                                        <span class="label">เลขหน้า 3 ตัว</span>
+                                        <span class="numbers">847</span>
+                                    </div>
+                                    <div class="prize-row">
+                                        <span class="label">เลขท้าย 3 ตัว</span>
+                                        <span class="numbers">156</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="draw-actions">
+                                <button class="btn btn-sm thai-outline">
+                                    <i class="fas fa-list"></i>
+                                    ดูรางวัลทั้งหมด
+                                </button>
+                                <button class="btn btn-sm thai-primary">
+                                    <i class="fas fa-search"></i>
+                                    ตรวจหวยของฉัน
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features thai-features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose PuChokDii?</h2>
+                <p class="thai-subtitle">ทำไมต้องเลือก ผู้โชคดี</p>
+                <p>Where wisdom meets luck - everything you need for Thai lottery</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card thai-card">
+                    <div class="feature-icon gold">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>ตรวจหวยอัตโนมัติ</h3>
+                    <h4>Automatic Number Checking</h4>
+                    <p>ตรวจสอบหมายเลขของคุณทันทีที่ผลออก รวดเร็ว แม่นยำ ไม่พลาด</p>
+                </div>
+
+                <div class="feature-card thai-card">
+                    <div class="feature-icon indigo">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>แจ้งเตือน SMS ฟรี</h3>
+                    <h4>FREE SMS Alerts</h4>
+                    <p>รับแจ้งเตือนผลหวยทาง SMS ฟรี! ไม่มีค่าใช้จ่าย ไม่มีโฆษณา</p>
+                </div>
+
+                <div class="feature-card thai-card">
+                    <div class="feature-icon crimson">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>วิเคราะห์สถิติหวย</h3>
+                    <h4>Number Analytics</h4>
+                    <p>วิเคราะห์เลขเด็ด เลขดัง สถิติการออกรางวัล ช่วยเพิ่มโอกาสถูกหวย</p>
+                </div>
+
+                <div class="feature-card thai-card">
+                    <div class="feature-icon gold">
+                        <i class="fas fa-dice"></i>
+                    </div>
+                    <h3>สุ่มเลขนำโชค</h3>
+                    <h4>Lucky Number Generator</h4>
+                    <p>ระบบสุ่มเลขอัจฉริยะ ผสมผสานสถิติและโชคลาภ เพื่อเลขนำโชค</p>
+                </div>
+
+                <div class="feature-card thai-card">
+                    <div class="feature-icon indigo">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>ปฏิทินการออกรางวัล</h3>
+                    <h4>Draw Calendar</h4>
+                    <p>ไม่พลาดทุกงวด ระบบแจ้งเตือนก่อนวันหวยออก พร้อมประวัติผลรางวัล</p>
+                </div>
+
+                <div class="feature-card thai-card">
+                    <div class="feature-icon crimson">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>ปลอดภัยและเชื่อถือได้</h3>
+                    <h4>Secure & Trusted</h4>
+                    <p>ข้อมูลปลอดภัย ไม่เก็บข้อมูลส่วนตัว ผลหวยตรงจากแหล่งราชการ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works thai-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>How PuChokDii Works</h2>
+                <p class="thai-subtitle">วิธีใช้งาน ผู้โชคดี</p>
+                <p>Get started in just 3 simple steps</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Create Account</h3>
+                        <h4>สร้างบัญชี</h4>
+                        <p>Sign up with your email. No passwords needed - we use secure magic links.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Add Your Numbers</h3>
+                        <h4>เพิ่มหมายเลขของคุณ</h4>
+                        <p>Save your favorite lottery numbers and set up SMS notifications.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Get Results</h3>
+                        <h4>รับผลการออกรางวัล</h4>
+                        <p>Receive instant SMS alerts when results are announced. Check if you won!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Results Section -->
+    <section id="results" class="results-section thai-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest Draw Results</h2>
+                <p class="thai-subtitle">ผลการออกรางวัลล่าสุด</p>
+            </div>
+
+            <div class="results-container">
+                <div class="draw-card">
+                    <div class="draw-info">
+                        <h3>งวดที่ 1 มกราคม 2567</h3>
+                        <span class="draw-status">ประกาศแล้ว</span>
+                    </div>
+
+                    <div class="full-results">
+                        <div class="prize-section">
+                            <h4>รางวัลที่ 1 - 6,000,000 บาท</h4>
+                            <div class="winning-number large">123456</div>
+                        </div>
+
+                        <div class="prize-grid">
+                            <div class="prize-item">
+                                <span class="label">รางวัลข้างเคียงรางวัลที่ 1</span>
+                                <div class="numbers">123455, 123457</div>
+                                <span class="amount">100,000 บาท</span>
+                            </div>
+
+                            <div class="prize-item">
+                                <span class="label">รางวัลที่ 2</span>
+                                <div class="numbers">789012, 345678, 901234, 567890, 234567</div>
+                                <span class="amount">200,000 บาท</span>
+                            </div>
+
+                            <div class="prize-item">
+                                <span class="label">รางวัลที่ 3</span>
+                                <div class="numbers">111111, 222222, 333333, 444444, 555555, 666666, 777777, 888888, 999999, 000000</div>
+                                <span class="amount">80,000 บาท</span>
+                            </div>
+
+                            <div class="prize-item small">
+                                <span class="label">เลขท้าย 2 ตัว</span>
+                                <div class="numbers">25</div>
+                                <span class="amount">2,000 บาท</span>
+                            </div>
+
+                            <div class="prize-item small">
+                                <span class="label">เลขหน้า 3 ตัว</span>
+                                <div class="numbers">847</div>
+                                <span class="amount">4,000 บาท</span>
+                            </div>
+
+                            <div class="prize-item small">
+                                <span class="label">เลขท้าย 3 ตัว</span>
+                                <div class="numbers">156</div>
+                                <span class="amount">4,000 บาท</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-actions">
+                        <button class="btn thai-primary">
+                            <i class="fas fa-search"></i>
+                            ตรวจหวยด่วน
+                        </button>
+                        <button class="btn thai-outline">
+                            <i class="fas fa-download"></i>
+                            บันทึกผล
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer thai-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand">
+                        <span class="logo-icon">🍀</span>
+                        <div class="brand-text">
+                            <span class="brand-name">PuChokDii</span>
+                            <span class="brand-thai">ผู้โชคดี</span>
+                        </div>
+                    </div>
+                    <p>Where wisdom meets luck</p>
+                    <p class="thai-text">ผู้โชคดีแห่งความรู้และโชคลาภ</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Features</h4>
+                        <a href="#check">ตรวจหวย</a>
+                        <a href="#alerts">แจ้งเตือน</a>
+                        <a href="#generator">สุ่มเลข</a>
+                        <a href="#analysis">วิเคราะห์</a>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <a href="mailto:support@puchokdii.com">ติดต่อเรา</a>
+                        <a href="/help">ช่วยเหลือ</a>
+                        <a href="/privacy">ความเป็นส่วนตัว</a>
+                        <a href="/terms">เงื่อนไขการใช้งาน</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 PuChokDii. Made with ❤️ for Thai lottery enthusiasts.</p>
+                <p class="disclaimer">ไม่ส่งเสริมการพนัน เพื่อความบันเทิงเท่านั้น</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>เข้าสู่ระบบ PuChokDii</h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">อีเมล / Email Address</label>
+                        <input type="email" id="email" required placeholder="your@email.com">
+                        <small>เราจะส่งลิงก์ปลอดภัยให้คุณทางอีเมล</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large thai-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        ส่งลิงก์เข้าสู่ระบบ
+                        <small>Send Login Link</small>
+                    </button>
+                </form>
+
+                <div class="login-note">
+                    <p>✨ ไม่ต้องจำรหัสผ่าน! เราใช้ระบบลิงก์ปลอดภัยทางอีเมล</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Check Modal -->
+    <div id="checkModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>ตรวจหวยด่วน</h2>
+                <button class="modal-close" id="checkModalClose">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <form id="quickCheckForm">
+                    <div class="form-group">
+                        <label for="checkNumbers">หมายเลขของคุณ</label>
+                        <input type="text" id="checkNumbers" placeholder="123456" maxlength="6" required>
+                        <small>กรอกหมายเลข 6 หลัก</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large thai-primary">
+                        <i class="fas fa-search"></i>
+                        ตรวจหวยเลย!
+                    </button>
+                </form>
+
+                <div id="checkResult" class="check-result" style="display: none;">
+                    <!-- Results will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/puchokdii.js"></script>
+</body>
+</html>

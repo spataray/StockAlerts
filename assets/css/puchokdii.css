@@ -1,0 +1,592 @@
+/* PuChokDii - Thai Lottery Platform Styles */
+
+/* Import base styles */
+@import url('main.css');
+
+/* Thai-specific color palette */
+:root {
+    /* PuChokDii Brand Colors */
+    --gold: #FFD700;
+    --gold-dark: #B8860B;
+    --gold-light: #FFF8DC;
+
+    --indigo: #4B0082;
+    --indigo-dark: #301934;
+    --indigo-light: #E6E6FA;
+
+    --crimson: #DC143C;
+    --crimson-dark: #B91C3C;
+    --crimson-light: #FEE2E2;
+
+    --thai-white: #FFFEF7;
+    --thai-black: #1C1917;
+    --thai-gray: #78716C;
+
+    /* Thai gradients */
+    --gradient-gold: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    --gradient-royal: linear-gradient(135deg, var(--indigo), var(--crimson));
+    --gradient-luck: linear-gradient(135deg, var(--gold-light), var(--indigo-light));
+}
+
+/* Typography - Thai fonts */
+.puchokdii-body {
+    font-family: 'Sarabun', 'Inter', sans-serif;
+    background: var(--thai-white);
+}
+
+/* Brand styling */
+.thai-nav .nav-brand .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+}
+
+.logo-icon {
+    font-size: 2rem;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--indigo);
+    letter-spacing: -0.02em;
+}
+
+.brand-thai {
+    font-size: 0.875rem;
+    color: var(--gold-dark);
+    font-weight: 500;
+    font-family: 'Sarabun', sans-serif;
+}
+
+/* Thai hero section */
+.thai-hero {
+    background: var(--gradient-royal);
+    position: relative;
+    overflow: hidden;
+}
+
+.thai-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-title {
+    text-align: center;
+    margin-bottom: var(--spacing-6);
+}
+
+.title-main {
+    display: block;
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--thai-white);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    letter-spacing: -0.02em;
+}
+
+.title-thai {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--gold);
+    font-family: 'Sarabun', sans-serif;
+    font-weight: 500;
+    margin-top: var(--spacing-2);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Thai buttons */
+.thai-btn, .thai-primary {
+    background: var(--gradient-gold);
+    color: var(--thai-black);
+    border: 2px solid var(--gold);
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.thai-primary small {
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+.thai-outline {
+    background: transparent;
+    color: var(--thai-white);
+    border: 2px solid var(--gold);
+}
+
+.thai-outline:hover {
+    background: var(--gold);
+    color: var(--thai-black);
+}
+
+/* Lottery display */
+.lottery-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.latest-draw {
+    background: var(--thai-white);
+    border-radius: 20px;
+    padding: var(--spacing-8);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.15),
+        0 0 0 1px rgba(255,215,0,0.1);
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+}
+
+.latest-draw::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--gradient-gold);
+    border-radius: 22px;
+    z-index: -1;
+}
+
+.draw-header {
+    text-align: center;
+    margin-bottom: var(--spacing-6);
+    padding-bottom: var(--spacing-4);
+    border-bottom: 2px solid var(--gold-light);
+}
+
+.draw-header h3 {
+    color: var(--indigo);
+    font-family: 'Sarabun', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-2);
+}
+
+.draw-date {
+    color: var(--thai-gray);
+    font-size: 0.875rem;
+}
+
+/* Winning numbers display */
+.first-prize {
+    text-align: center;
+    margin-bottom: var(--spacing-6);
+}
+
+.prize-label {
+    display: block;
+    color: var(--crimson);
+    font-weight: 600;
+    font-family: 'Sarabun', sans-serif;
+    margin-bottom: var(--spacing-3);
+}
+
+.number-display {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-3);
+}
+
+.number-display .number {
+    width: 40px;
+    height: 50px;
+    background: var(--gradient-gold);
+    color: var(--thai-black);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 2px solid var(--gold-dark);
+}
+
+.prize-amount {
+    color: var(--indigo);
+    font-weight: 600;
+    font-family: 'Sarabun', sans-serif;
+}
+
+.other-prizes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+}
+
+.prize-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-2) var(--spacing-4);
+    background: var(--gradient-luck);
+    border-radius: 8px;
+    border: 1px solid var(--gold-light);
+}
+
+.prize-row .label {
+    font-family: 'Sarabun', sans-serif;
+    color: var(--indigo);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.prize-row .numbers {
+    font-weight: 700;
+    color: var(--thai-black);
+    font-size: 1.1rem;
+}
+
+.draw-actions {
+    display: flex;
+    gap: var(--spacing-3);
+    margin-top: var(--spacing-6);
+}
+
+.draw-actions .btn {
+    flex: 1;
+    font-size: 0.875rem;
+}
+
+/* Thai feature cards */
+.thai-features {
+    background: var(--gradient-luck);
+    position: relative;
+}
+
+.thai-card {
+    background: var(--thai-white);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.thai-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--gradient-gold);
+    border-radius: 14px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.thai-card:hover::before {
+    opacity: 1;
+}
+
+.thai-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.feature-icon.gold {
+    background: var(--gradient-gold);
+    color: var(--thai-black);
+}
+
+.feature-icon.indigo {
+    background: linear-gradient(135deg, var(--indigo), var(--indigo-dark));
+    color: var(--thai-white);
+}
+
+.feature-icon.crimson {
+    background: linear-gradient(135deg, var(--crimson), var(--crimson-dark));
+    color: var(--thai-white);
+}
+
+.thai-card h3 {
+    color: var(--indigo);
+    font-family: 'Sarabun', sans-serif;
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-2);
+}
+
+.thai-card h4 {
+    color: var(--thai-gray);
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-3);
+}
+
+/* Thai section styling */
+.thai-section {
+    position: relative;
+}
+
+.thai-subtitle {
+    font-family: 'Sarabun', sans-serif;
+    color: var(--gold-dark);
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-2);
+}
+
+/* Steps styling */
+.step-number {
+    background: var(--gradient-gold);
+    color: var(--thai-black);
+    border: 3px solid var(--gold-dark);
+}
+
+.step h4 {
+    font-family: 'Sarabun', sans-serif;
+    color: var(--gold-dark);
+    font-size: 1rem;
+    margin-top: var(--spacing-2);
+}
+
+/* Results section */
+.results-section {
+    background: var(--thai-white);
+}
+
+.draw-card {
+    background: var(--thai-white);
+    border-radius: 16px;
+    padding: var(--spacing-8);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 2px solid var(--gold-light);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.draw-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-6);
+    padding-bottom: var(--spacing-4);
+    border-bottom: 2px solid var(--gold-light);
+}
+
+.draw-info h3 {
+    color: var(--indigo);
+    font-family: 'Sarabun', sans-serif;
+    margin-bottom: 0;
+}
+
+.draw-status {
+    background: var(--gradient-gold);
+    color: var(--thai-black);
+    padding: var(--spacing-1) var(--spacing-3);
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.prize-section {
+    text-align: center;
+    margin-bottom: var(--spacing-8);
+    padding: var(--spacing-6);
+    background: var(--gradient-luck);
+    border-radius: 12px;
+    border: 2px solid var(--gold-light);
+}
+
+.prize-section h4 {
+    color: var(--crimson);
+    font-family: 'Sarabun', sans-serif;
+    margin-bottom: var(--spacing-4);
+}
+
+.winning-number.large {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--indigo);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    letter-spacing: 0.1em;
+    margin: var(--spacing-4) 0;
+}
+
+.prize-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+}
+
+.prize-item {
+    padding: var(--spacing-4);
+    background: var(--thai-white);
+    border-radius: 8px;
+    border: 1px solid var(--gold-light);
+    text-align: left;
+}
+
+.prize-item.small {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-3);
+}
+
+.prize-item .label {
+    color: var(--indigo);
+    font-family: 'Sarabun', sans-serif;
+    font-weight: 600;
+    margin-bottom: var(--spacing-2);
+    display: block;
+}
+
+.prize-item .numbers {
+    color: var(--thai-black);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-2);
+}
+
+.prize-item .amount {
+    color: var(--crimson);
+    font-weight: 600;
+    font-family: 'Sarabun', sans-serif;
+}
+
+.result-actions {
+    display: flex;
+    gap: var(--spacing-4);
+    justify-content: center;
+    margin-top: var(--spacing-6);
+}
+
+/* Thai footer */
+.thai-footer {
+    background: var(--gradient-royal);
+    color: var(--thai-white);
+}
+
+.thai-footer .footer-brand .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.thai-text {
+    font-family: 'Sarabun', sans-serif;
+    color: var(--gold-light);
+}
+
+.disclaimer {
+    color: var(--gold-light);
+    font-size: 0.75rem;
+    text-align: center;
+    margin-top: var(--spacing-2);
+}
+
+/* Modal styling */
+.modal-content {
+    border: 3px solid var(--gold);
+}
+
+.modal-header h2 {
+    color: var(--indigo);
+    font-family: 'Sarabun', sans-serif;
+}
+
+/* Quick check results */
+.check-result {
+    margin-top: var(--spacing-6);
+    padding: var(--spacing-6);
+    background: var(--gradient-luck);
+    border-radius: 12px;
+    border: 2px solid var(--gold-light);
+    text-align: center;
+}
+
+.check-result.winner {
+    background: var(--gradient-gold);
+    border-color: var(--gold-dark);
+}
+
+.check-result.no-win {
+    background: var(--indigo-light);
+    border-color: var(--indigo);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .title-main {
+        font-size: 2.5rem;
+    }
+
+    .title-thai {
+        font-size: 1.125rem;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        gap: var(--spacing-4);
+    }
+
+    .latest-draw {
+        padding: var(--spacing-6);
+    }
+
+    .number-display .number {
+        width: 32px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
+
+    .draw-actions {
+        flex-direction: column;
+    }
+
+    .prize-grid {
+        gap: var(--spacing-3);
+    }
+
+    .result-actions {
+        flex-direction: column;
+    }
+
+    .draw-info {
+        flex-direction: column;
+        gap: var(--spacing-2);
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .thai-primary small,
+    .thai-outline small {
+        display: none;
+    }
+
+    .winning-number.large {
+        font-size: 2rem;
+    }
+
+    .prize-item.small {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-2);
+    }
+}

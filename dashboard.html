@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - StockAlerts</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/dashboard.css" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    <!-- Dashboard Navigation -->
+    <nav class="dashboard-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-chart-line"></i>
+                <span>StockAlerts</span>
+            </div>
+            <div class="nav-user">
+                <span class="user-email" id="userEmail">Loading...</span>
+                <div class="user-menu">
+                    <button class="user-menu-toggle" id="userMenuToggle">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="#" id="profileBtn"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#" id="settingsBtn"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-menu">
+                <a href="#" class="menu-item active" data-section="overview">
+                    <i class="fas fa-home"></i>
+                    <span>Overview</span>
+                </a>
+                <a href="#" class="menu-item" data-section="stocks">
+                    <i class="fas fa-chart-line"></i>
+                    <span>My Stocks</span>
+                </a>
+                <a href="#" class="menu-item" data-section="alerts">
+                    <i class="fas fa-bell"></i>
+                    <span>Alert History</span>
+                </a>
+                <a href="#" class="menu-item" data-section="profile">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Overview Section -->
+            <section id="overview" class="dashboard-section active">
+                <div class="section-header">
+                    <h1>Welcome back!</h1>
+                    <p>Here's your stock monitoring overview</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalStocks">0</h3>
+                            <p>Stocks Monitored</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalAlerts">0</h3>
+                            <p>Alerts Sent Today</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="phoneStatus">Not Set</h3>
+                            <p>Phone Status</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="lastCheck">Never</h3>
+                            <p>Last Price Check</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="addStockBtn">
+                            <i class="fas fa-plus"></i>
+                            Add Stock to Watch
+                        </button>
+                        <button class="btn btn-outline" id="testAlertBtn">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Test Alert
+                        </button>
+                        <button class="btn btn-outline" id="setupPhoneBtn">
+                            <i class="fas fa-mobile-alt"></i>
+                            Setup Phone Number
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="recent-activity">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list" id="activityList">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p>Welcome to StockAlerts! Add your first stock to get started.</p>
+                                <span class="activity-time">Just now</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stocks Section -->
+            <section id="stocks" class="dashboard-section">
+                <div class="section-header">
+                    <h1>My Stocks</h1>
+                    <button class="btn btn-primary" id="addStockBtnTop">
+                        <i class="fas fa-plus"></i>
+                        Add Stock
+                    </button>
+                </div>
+
+                <div class="stocks-container">
+                    <div class="empty-state" id="emptyStocks">
+                        <div class="empty-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>No stocks added yet</h3>
+                        <p>Add your first stock to start monitoring price changes and receiving alerts.</p>
+                        <button class="btn btn-primary" id="addFirstStock">
+                            <i class="fas fa-plus"></i>
+                            Add Your First Stock
+                        </button>
+                    </div>
+
+                    <div class="stocks-list" id="stocksList" style="display: none;">
+                        <!-- Stocks will be populated here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Alerts Section -->
+            <section id="alerts" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Alert History</h1>
+                    <div class="section-filters">
+                        <select id="alertFilter" class="filter-select">
+                            <option value="all">All Alerts</option>
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="alerts-container">
+                    <div class="empty-state" id="emptyAlerts">
+                        <div class="empty-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h3>No alerts sent yet</h3>
+                        <p>When your stocks hit their thresholds, you'll see the alert history here.</p>
+                    </div>
+
+                    <div class="alerts-list" id="alertsList" style="display: none;">
+                        <!-- Alerts will be populated here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profile" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Profile Settings</h1>
+                    <p>Manage your account and notification preferences</p>
+                </div>
+
+                <div class="profile-container">
+                    <div class="profile-card">
+                        <h2>Account Information</h2>
+                        <form id="accountForm">
+                            <div class="form-group">
+                                <label for="profileEmail">Email Address</label>
+                                <input type="email" id="profileEmail" readonly>
+                                <small>This is your login email and cannot be changed</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="profileName">Display Name (Optional)</label>
+                                <input type="text" id="profileName" placeholder="Enter your name">
+                                <small>This helps personalize your experience</small>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="profile-card">
+                        <h2>SMS Alert Settings</h2>
+                        <form id="phoneForm">
+                            <div class="form-group">
+                                <label for="phoneNumber">Phone Number</label>
+                                <input type="tel" id="phoneNumber" placeholder="1234567890" required>
+                                <small>Enter your 10-digit phone number (no spaces or dashes)</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="carrier">Carrier</label>
+                                <select id="carrier" required>
+                                    <option value="">Select your carrier</option>
+                                    <option value="verizon">Verizon</option>
+                                    <option value="att">AT&T</option>
+                                    <option value="tmobile">T-Mobile</option>
+                                    <option value="sprint">Sprint</option>
+                                    <option value="boost">Boost Mobile</option>
+                                    <option value="cricket">Cricket</option>
+                                    <option value="metropcs">MetroPCS</option>
+                                    <option value="virgin">Virgin Mobile</option>
+                                    <option value="uscellular">US Cellular</option>
+                                    <option value="straighttalk">Straight Talk</option>
+                                </select>
+                                <small>⚠️ If you change carriers, remember to update this setting!</small>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i>
+                                    Save Phone Settings
+                                </button>
+                                <button type="button" class="btn btn-outline" id="testPhoneBtn">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Send Test SMS
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="profile-card">
+                        <h2>Email Preferences</h2>
+                        <form id="emailPrefsForm">
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="emailReminders" checked>
+                                    <span class="checkbox-custom"></span>
+                                    Phone number reminders
+                                </label>
+                                <small>Get weekly emails reminding you of your current alert phone number</small>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="emailSummary" checked>
+                                    <span class="checkbox-custom"></span>
+                                    Daily alert summary
+                                </label>
+                                <small>Receive a daily email summary of all alerts sent</small>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i>
+                                Save Email Preferences
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="profile-card danger-zone">
+                        <h2>Danger Zone</h2>
+                        <p>These actions cannot be undone.</p>
+                        <button class="btn btn-danger" id="deleteAccountBtn">
+                            <i class="fas fa-trash"></i>
+                            Delete Account
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add Stock Modal -->
+    <div id="addStockModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Stock to Watch</h2>
+                <button class="modal-close" id="addStockModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addStockForm">
+                    <div class="form-group">
+                        <label for="stockSymbol">Stock Symbol</label>
+                        <input type="text" id="stockSymbol" placeholder="AAPL" required style="text-transform: uppercase;">
+                        <small>Enter the stock ticker symbol (e.g., AAPL, TSLA, MSFT)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="stockName">Company Name (Optional)</label>
+                        <input type="text" id="stockName" placeholder="Apple Inc.">
+                        <small>This will be auto-filled if left blank</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="threshold">Alert Threshold ($)</label>
+                        <input type="number" id="threshold" step="0.01" min="0.01" placeholder="150.00" required>
+                        <small>You'll be alerted when the stock price crosses this threshold</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="alertType">Alert Type</label>
+                        <select id="alertType" required>
+                            <option value="below">Alert when price goes BELOW threshold</option>
+                            <option value="above">Alert when price goes ABOVE threshold</option>
+                        </select>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Add Stock
+                        </button>
+                        <button type="button" class="btn btn-outline" id="cancelAddStock">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
