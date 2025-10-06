@@ -609,11 +609,6 @@ class StockAlertsDashboard {
     }
 
     async apiCall(endpoint, options = {}) {
-        // Use Railway backend URL in production, localhost in development
-        const API_BASE = window.location.hostname === 'localhost'
-            ? 'http://localhost:3000'
-            : 'https://your-app.railway.app'; // Replace with your actual Railway URL
-
         const defaultOptions = {
             method: 'GET',
             headers: {
@@ -624,7 +619,7 @@ class StockAlertsDashboard {
 
         const config = { ...defaultOptions, ...options };
 
-        const response = await fetch(API_BASE + endpoint, config);
+        const response = await fetch(window.APP_CONFIG.API_BASE + endpoint, config);
         const data = await response.json();
 
         if (!response.ok) {
