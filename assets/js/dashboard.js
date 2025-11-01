@@ -48,14 +48,8 @@ class StockAlertsDashboard {
                 document.getElementById('profileName').value = this.user.name;
             }
 
-            if (this.user.phoneNumber) {
-                document.getElementById('phoneNumber').value = this.user.phoneNumber;
-                document.getElementById('phoneStatus').textContent = 'Configured';
-            }
-
-            if (this.user.carrier) {
-                document.getElementById('carrier').value = this.user.carrier;
-            }
+            // Update email display in settings
+            document.getElementById('userEmailDisplay').textContent = this.user.email;
 
             // Update checkboxes
             document.getElementById('emailReminders').checked = this.user.emailReminders !== false;
@@ -129,9 +123,6 @@ class StockAlertsDashboard {
         document.getElementById('addStockBtnTop')?.addEventListener('click', () => this.showAddStockModal());
         document.getElementById('addFirstStock')?.addEventListener('click', () => this.showAddStockModal());
 
-        document.getElementById('testAlertBtn')?.addEventListener('click', () => this.sendTestAlert());
-        document.getElementById('setupPhoneBtn')?.addEventListener('click', () => this.showSection('profile'));
-
         // Add stock modal
         this.initAddStockModal();
 
@@ -203,21 +194,10 @@ class StockAlertsDashboard {
             this.updateProfile();
         });
 
-        // Phone form
-        document.getElementById('phoneForm')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.updatePhoneSettings();
-        });
-
         // Email preferences form
         document.getElementById('emailPrefsForm')?.addEventListener('submit', (e) => {
             e.preventDefault();
             this.updateEmailPreferences();
-        });
-
-        // Test phone button
-        document.getElementById('testPhoneBtn')?.addEventListener('click', () => {
-            this.sendTestAlert();
         });
 
         // Delete account button
@@ -341,50 +321,6 @@ class StockAlertsDashboard {
         }
     }
 
-    async updatePhoneSettings() {
-        const form = document.getElementById('phoneForm');
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-
-        try {
-            const phoneNumber = document.getElementById('phoneNumber').value.trim();
-            const carrier = document.getElementById('carrier').value;
-
-            // Validate phone number format
-            const phoneRegex = /^\d{10}$/;
-            if (!phoneRegex.test(phoneNumber)) {
-                this.showNotification('Please enter a valid 10-digit phone number', 'error');
-                return;
-            }
-
-            if (!carrier) {
-                this.showNotification('Please select your carrier', 'error');
-                return;
-            }
-
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
-            submitBtn.disabled = true;
-
-            await this.apiCall('/api/user/phone', {
-                method: 'PUT',
-                body: JSON.stringify({ phoneNumber, carrier })
-            });
-
-            this.user.phoneNumber = phoneNumber;
-            this.user.carrier = carrier;
-
-            document.getElementById('phoneStatus').textContent = 'Configured';
-            this.showNotification('Phone settings updated successfully!', 'success');
-
-        } catch (error) {
-            console.error('Error updating phone settings:', error);
-            this.showNotification('Failed to update phone settings. Please try again.', 'error');
-        } finally {
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        }
-    }
-
     async updateEmailPreferences() {
         const form = document.getElementById('emailPrefsForm');
         const submitBtn = form.querySelector('button[type="submit"]');
@@ -413,26 +349,6 @@ class StockAlertsDashboard {
         } finally {
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
-        }
-    }
-
-    async sendTestAlert() {
-        if (!this.user.phoneNumber || !this.user.carrier) {
-            this.showNotification('Please configure your phone number and carrier first', 'error');
-            this.showSection('profile');
-            return;
-        }
-
-        try {
-            const response = await this.apiCall('/api/user/test-alert', {
-                method: 'POST'
-            });
-
-            this.showNotification('Test alert sent! Check your phone.', 'success');
-
-        } catch (error) {
-            console.error('Error sending test alert:', error);
-            this.showNotification('Failed to send test alert. Please check your phone settings.', 'error');
         }
     }
 
@@ -558,10 +474,6 @@ class StockAlertsDashboard {
     }
 
     updateUI() {
-        // Update phone status
-        const phoneConfigured = this.user.phoneNumber && this.user.carrier;
-        document.getElementById('phoneStatus').textContent = phoneConfigured ? 'Configured' : 'Not Set';
-
         // Update activity
         this.updateActivity();
     }
@@ -571,11 +483,11 @@ class StockAlertsDashboard {
         const activities = [];
 
         // Add recent activities based on user data
-        if (this.user.phoneNumber) {
+        if (this.user.email) {
             activities.push({
-                icon: 'fas fa-mobile-alt',
-                message: `Phone number configured: ***-***-${this.user.phoneNumber.slice(-4)}`,
-                time: 'Recently'
+                icon: 'fas fa-envelope',
+                message: `Email alerts enabled: ${this.user.email}`,
+                time: 'Active'
             });
         }
 
