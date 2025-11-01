@@ -52,7 +52,7 @@ class Database {
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP
             )`,
 
-            // User stocks table
+            // User stocks table (updated to allow multiple alerts per stock)
             `CREATE TABLE IF NOT EXISTS user_stocks (
                 id TEXT PRIMARY KEY,
                 user_id TEXT NOT NULL,
@@ -63,8 +63,7 @@ class Database {
                 is_active BOOLEAN DEFAULT 1,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-                UNIQUE(user_id, symbol)
+                FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
             )`,
 
             // Alert history table
@@ -97,6 +96,9 @@ class Database {
             await this.run(table);
         }
 
+        // Run migration to remove old UNIQUE constraint if needed
+        await this.migrateUserStocksTable();
+
         // Create indexes
         const indexes = [
             'CREATE INDEX IF NOT EXISTS idx_users_email ON users(email)',
@@ -113,6 +115,47 @@ class Database {
         }
 
         console.log('✅ Database tables initialized');
+    }
+
+    async migrateUserStocksTable() {
+        try {
+            // Check if the old unique constraint exists
+            const tableInfo = await this.all("SELECT sql FROM sqlite_master WHERE type='table' AND name='user_stocks'");
+
+            if (tableInfo.length > 0 && tableInfo[0].sql.includes('UNIQUE(user_id, symbol)')) {
+                console.log('🔄 Migrating user_stocks table to allow multiple alerts per stock...');
+
+                // Create new table with updated schema
+                await this.run(`CREATE TABLE IF NOT EXISTS user_stocks_new (
+                    id TEXT PRIMARY KEY,
+                    user_id TEXT NOT NULL,
+                    symbol TEXT NOT NULL,
+                    name TEXT,
+                    threshold REAL NOT NULL,
+                    alert_type TEXT NOT NULL CHECK (alert_type IN ('above', 'below')),
+                    is_active BOOLEAN DEFAULT 1,
+                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+                )`);
+
+                // Copy data from old table
+                await this.run(`INSERT INTO user_stocks_new
+                    SELECT id, user_id, symbol, name, threshold, alert_type, is_active, created_at, updated_at
+                    FROM user_stocks`);
+
+                // Drop old table
+                await this.run('DROP TABLE user_stocks');
+
+                // Rename new table
+                await this.run('ALTER TABLE user_stocks_new RENAME TO user_stocks');
+
+                console.log('✅ Migration completed - you can now add multiple alerts per stock');
+            }
+        } catch (error) {
+            console.error('Migration error:', error);
+            // Don't throw - allow app to continue even if migration fails
+        }
     }
 
     run(sql, params = []) {
