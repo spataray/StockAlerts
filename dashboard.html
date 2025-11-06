@@ -233,55 +233,22 @@
                     </div>
 
                     <div class="profile-card">
-                        <h2>SMS Alert Settings</h2>
-                        <form id="phoneForm">
-                            <div class="form-group">
-                                <label for="phoneNumber">Phone Number</label>
-                                <input type="tel" id="phoneNumber" placeholder="1234567890" required>
-                                <small>Enter your 10-digit phone number (no spaces or dashes)</small>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="carrier">Carrier</label>
-                                <select id="carrier" required>
-                                    <option value="">Select your carrier</option>
-                                    <option value="verizon">Verizon</option>
-                                    <option value="att">AT&T</option>
-                                    <option value="tmobile">T-Mobile</option>
-                                    <option value="sprint">Sprint</option>
-                                    <option value="boost">Boost Mobile</option>
-                                    <option value="cricket">Cricket</option>
-                                    <option value="metropcs">MetroPCS</option>
-                                    <option value="virgin">Virgin Mobile</option>
-                                    <option value="uscellular">US Cellular</option>
-                                    <option value="straighttalk">Straight Talk</option>
-                                </select>
-                                <small>⚠️ If you change carriers, remember to update this setting!</small>
-                            </div>
-
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-save"></i>
-                                    Save Phone Settings
-                                </button>
-                                <button type="button" class="btn btn-outline" id="testPhoneBtn">
-                                    <i class="fas fa-paper-plane"></i>
-                                    Send Test SMS
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="profile-card">
-                        <h2>Email Preferences</h2>
+                        <h2>Email Alert Settings</h2>
                         <form id="emailPrefsForm">
+                            <div class="alert-info" style="background: #e7f3ff; border-left: 4px solid #2196F3; padding: 12px; margin-bottom: 20px; border-radius: 4px;">
+                                <p style="margin: 0; color: #1976D2;">
+                                    <i class="fas fa-info-circle"></i>
+                                    All stock alerts will be sent to your registered email address: <strong id="userEmailDisplay"></strong>
+                                </p>
+                            </div>
+
                             <div class="form-group checkbox-group">
                                 <label class="checkbox-label">
                                     <input type="checkbox" id="emailReminders" checked>
                                     <span class="checkbox-custom"></span>
-                                    Phone number reminders
+                                    Stock alert reminders
                                 </label>
-                                <small>Get weekly emails reminding you of your current alert phone number</small>
+                                <small>Get weekly emails with a summary of your active stock alerts</small>
                             </div>
 
                             <div class="form-group checkbox-group">

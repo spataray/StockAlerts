@@ -209,6 +209,16 @@ class UserDatabase {
             const stockId = uuidv4();
             const { symbol, name, threshold, alertType } = stockData;
 
+            // Check for exact duplicate (same symbol, alert type, and threshold)
+            const existing = await database.get(
+                'SELECT id FROM user_stocks WHERE user_id = ? AND symbol = ? AND alert_type = ? AND threshold = ? AND is_active = 1',
+                [userId, symbol.toUpperCase(), alertType, threshold]
+            );
+
+            if (existing) {
+                throw new Error('You already have this exact alert set up');
+            }
+
             await database.run(
                 'INSERT INTO user_stocks (id, user_id, symbol, name, threshold, alert_type) VALUES (?, ?, ?, ?, ?, ?)',
                 [stockId, userId, symbol.toUpperCase(), name, threshold, alertType]
@@ -222,8 +232,8 @@ class UserDatabase {
                 alertType
             };
         } catch (error) {
-            if (error.code === 'SQLITE_CONSTRAINT_UNIQUE') {
-                throw new Error('You are already monitoring this stock');
+            if (error.message.includes('already have this exact alert')) {
+                throw error;
             }
             console.error('Error adding user stock:', error);
             throw error;
@@ -268,7 +278,7 @@ class UserDatabase {
     async removeUserStock(userId, stockId) {
         try {
             const result = await database.run(
-                'UPDATE user_stocks SET is_active = 0 WHERE user_id = ? AND id = ?',
+                'DELETE FROM user_stocks WHERE user_id = ? AND id = ?',
                 [userId, stockId]
             );
 

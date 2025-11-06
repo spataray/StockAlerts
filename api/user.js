@@ -55,57 +55,6 @@ router.put('/profile', async (req, res) => {
     }
 });
 
-// Update phone settings
-router.put('/phone', async (req, res) => {
-    try {
-        const { phoneNumber, carrier } = req.body;
-
-        if (!phoneNumber || !carrier) {
-            return res.status(400).json({
-                success: false,
-                message: 'Phone number and carrier are required'
-            });
-        }
-
-        // Validate phone number format (10 digits)
-        const phoneRegex = /^\d{10}$/;
-        if (!phoneRegex.test(phoneNumber)) {
-            return res.status(400).json({
-                success: false,
-                message: 'Phone number must be 10 digits'
-            });
-        }
-
-        const validCarriers = ['verizon', 'att', 'tmobile', 'sprint', 'boost', 'cricket', 'metropcs', 'virgin', 'uscellular', 'straighttalk'];
-        if (!validCarriers.includes(carrier)) {
-            return res.status(400).json({
-                success: false,
-                message: 'Invalid carrier'
-            });
-        }
-
-        const updates = {
-            phone_number: phoneNumber,
-            carrier: carrier
-        };
-
-        const updatedUser = await userDb.updateUser(req.user.id, updates);
-
-        res.json({
-            success: true,
-            message: 'Phone settings updated successfully',
-            user: updatedUser
-        });
-
-    } catch (error) {
-        console.error('Update phone error:', error);
-        res.status(500).json({
-            success: false,
-            message: 'Failed to update phone settings'
-        });
-    }
-});
-
 // Update email preferences
 router.put('/email-preferences', async (req, res) => {
     try {
@@ -310,45 +259,6 @@ router.get('/alerts', async (req, res) => {
 });
 
 // Send test alert
-router.post('/test-alert', async (req, res) => {
-    try {
-        const user = await userDb.getUserById(req.user.id);
-
-        if (!user.phoneNumber || !user.carrier) {
-            return res.status(400).json({
-                success: false,
-                message: 'Phone number and carrier must be configured first'
-            });
-        }
-
-        // Set environment variables for the alert system
-        process.env.ALERT_PHONE_NUMBER = user.phoneNumber;
-        process.env.CARRIER_OVERRIDE = user.carrier;
-
-        // Send test alert
-        const result = await sendTestAlert();
-
-        if (result) {
-            res.json({
-                success: true,
-                message: 'Test alert sent successfully'
-            });
-        } else {
-            res.status(500).json({
-                success: false,
-                message: 'Failed to send test alert'
-            });
-        }
-
-    } catch (error) {
-        console.error('Send test alert error:', error);
-        res.status(500).json({
-            success: false,
-            message: 'Failed to send test alert'
-        });
-    }
-});
-
 // Delete user account
 router.delete('/account', async (req, res) => {
     try {

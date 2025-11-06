@@ -37,12 +37,11 @@ class MultiUserStockMonitor {
 
             // Get all active stocks from all users
             const allStocks = await database.all(`
-                SELECT DISTINCT us.*, u.phone_number, u.carrier, u.email
+                SELECT DISTINCT us.*, u.email
                 FROM user_stocks us
                 JOIN users u ON us.user_id = u.id
                 WHERE us.is_active = 1
-                AND u.phone_number IS NOT NULL
-                AND u.carrier IS NOT NULL
+                AND u.email IS NOT NULL
             `);
 
             if (allStocks.length === 0) {
@@ -128,8 +127,8 @@ class MultiUserStockMonitor {
 
             // Get user details
             const user = await userDb.getUserById(stock.user_id);
-            if (!user || !user.phoneNumber || !user.carrier) {
-                console.log(`⚠️ User ${stock.user_id} missing phone configuration`);
+            if (!user || !user.email) {
+                console.log(`⚠️ User ${stock.user_id} missing email address`);
                 return;
             }
 
@@ -148,15 +147,15 @@ class MultiUserStockMonitor {
                 change: 0, // Could calculate from previous price
                 changePercent: '0.0%',
                 threshold: stock.threshold,
+                alertType: stock.alert_type,
                 trends: trends,
                 chartUrl: `${process.env.CHART_BASE_URL || ''}/chart/${stock.symbol}`
             };
 
             console.log(`🚨 ALERT: ${stock.symbol} for user ${user.email}`);
 
-            // Set environment variables for this user
-            process.env.ALERT_PHONE_NUMBER = user.phoneNumber;
-            process.env.CARRIER_OVERRIDE = user.carrier;
+            // Set environment variable for this user's email
+            process.env.ALERT_EMAIL = user.email;
 
             // Send alert
             const alertSent = await sendAlert(alertData);
@@ -169,7 +168,7 @@ class MultiUserStockMonitor {
                 alertType: stock.alert_type,
                 message: this.buildAlertMessage(alertData),
                 sentSuccessfully: alertSent,
-                errorMessage: alertSent ? null : 'Failed to send SMS'
+                errorMessage: alertSent ? null : 'Failed to send email'
             });
 
         } catch (error) {
@@ -264,12 +263,11 @@ Threshold: $${alertData.threshold.toFixed(2)}
 
         // Force alerts for testing (temporarily lower thresholds)
         const testUsers = await database.all(`
-            SELECT DISTINCT us.*, u.phone_number, u.carrier, u.email
+            SELECT DISTINCT us.*, u.email
             FROM user_stocks us
             JOIN users u ON us.user_id = u.id
             WHERE us.is_active = 1
-            AND u.phone_number IS NOT NULL
-            AND u.carrier IS NOT NULL
+            AND u.email IS NOT NULL
             LIMIT 1
         `);
 
