@@ -9,6 +9,8 @@
 "monitor": "node multiUserMonitor.js",
 "monitor-once": "node multiUserMonitor.js --once",
 "monitor-test": "node multiUserMonitor.js --test",
+"test-setup": "node test-setup.js",
+"test-alerts": "node test-alerts.js",
 "legacy-monitor": "node stock-alert-system/src/priceMonitor.js",
 "legacy-test": "node stock-alert-system/src/priceMonitor.js --test",
 "legacy-check": "node stock-alert-system/src/priceMonitor.js --once",
